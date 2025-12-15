@@ -18,12 +18,12 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
         <li><b>Focus:</b> Graph-Level Optimization & Memory Bandwidth.</li>
         <li><b>Concept:</b> Analysis of how the XLA compiler fuses element-wise operations (like GELU or Swish) into single kernels to reduce HBM access penalties.</li>
         <li><b>Key Artifact:</b> Roofline analysis comparing Eager Execution vs. XLA JIT.</li>
-        <li><b>Insight:</b> As shown in the graph, <b>Eager Execution (Red)</b> collapses on medium-complexity workloads, while <b>JIT (Green)</b> saturates the hardware bandwidth (~220 GB/s).</li>
       </ul>
     </td>
     <td width="40%" valign="top">
       <br>
       <img src="images/fusion_medium.png" alt="Medium Fusion Roofline Plot" width="100%">
+      <b>Eager Execution (Red)</b> collapses on medium-complexity workloads, while <b>JIT (Green)</b> saturates the hardware bandwidth
     </td>
   </tr>
 
