@@ -23,7 +23,7 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
     <td width="40%" valign="top">
       <br>
       <img src="images/fusion_medium.png" alt="Medium Fusion Roofline Plot" width="100%">
-      <b>Eager Execution (Red)</b> collapses on medium-complexity workloads, while <b>JIT (Green)</b> saturates the hardware bandwidth
+      <b>Eager Execution (Red)</b> collapses on medium-complexity workloads, while <b>JIT (Green)</b> saturates the hardware bandwidth.
     </td>
   </tr>
 
@@ -36,8 +36,10 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
         <li><b>Key Artifact:</b> Latency and size benchmarks on standard vision backbones.</li>
       </ul>
     </td>
-    <td width="40%" valign="center" align="center">
-      <i>[Visual Benchmark Coming Soon]</i>
+    <td width="40%" valign="top">
+      <br>
+      <img src="images/quantization_confidence.png" alt="Quantization Confidence Drift" width="100%">
+      <b>4x size reduction</b> (13MB → 3.6MB) with negligible accuracy loss and minimal confidence drift (<5%) on standard test images.
     </td>
   </tr>
 
