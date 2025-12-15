@@ -23,7 +23,7 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
     </td>
     <td width="40%" valign="top">
       <br>
-      <img src="images/medium_fusion.png" alt="Medium Fusion Roofline Plot" width="100%">
+      <img src="images/fusion_medium.png" alt="Medium Fusion Roofline Plot" width="100%">
     </td>
   </tr>
 
