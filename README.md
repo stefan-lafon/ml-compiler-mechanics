@@ -10,17 +10,48 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 
 ## Modules
 
-### 1. The Operator Fusion Advantage (XLA/JAX)
-* **Focus:** Graph-Level Optimization & Memory Bandwidth.
-* **Concept:** Analysis of how the XLA compiler fuses element-wise operations (like GELU or Swish) into single kernels to reduce HBM access penalties.
-* **Key Artifact:** Inspection of HLO (High-Level Optimizer) IR to visualize the "Fusion" instruction in practice.
+<table>
+  <tr>
+    <td width="60%" valign="top">
+      <h3>1. The Operator Fusion Advantage (XLA/JAX)</h3>
+      <ul>
+        <li><b>Focus:</b> Graph-Level Optimization & Memory Bandwidth.</li>
+        <li><b>Concept:</b> Analysis of how the XLA compiler fuses element-wise operations (like GELU or Swish) into single kernels to reduce HBM access penalties.</li>
+        <li><b>Key Artifact:</b> Roofline analysis comparing Eager Execution vs. XLA JIT.</li>
+        <li><b>Insight:</b> As shown in the graph, <b>Eager Execution (Red)</b> collapses on medium-complexity workloads, while <b>JIT (Green)</b> saturates the hardware bandwidth (~220 GB/s).</li>
+      </ul>
+    </td>
+    <td width="40%" valign="top">
+      <br>
+      <img src="images/medium_fusion.png" alt="Medium Fusion Roofline Plot" width="100%">
+    </td>
+  </tr>
 
-### 2. Quantization & Precision (TFLite)
-* **Focus:** Arithmetic Efficiency & Model Footprint.
-* **Concept:** A comparative study of FP32 vs. INT8 execution. This module explores how reducing precision impacts model size and enables the usage of high-throughput integer pipelines on NPU architectures.
-* **Key Artifact:** Latency and size benchmarks on standard vision backbones.
+  <tr>
+    <td width="60%" valign="top">
+      <h3>2. Quantization & Precision (TFLite)</h3>
+      <ul>
+        <li><b>Focus:</b> Arithmetic Efficiency & Model Footprint.</li>
+        <li><b>Concept:</b> A comparative study of FP32 vs. INT8 execution. This module explores how reducing precision impacts model size and enables the usage of high-throughput integer pipelines on NPU architectures.</li>
+        <li><b>Key Artifact:</b> Latency and size benchmarks on standard vision backbones.</li>
+      </ul>
+    </td>
+    <td width="40%" valign="center" align="center">
+      <i>[Visual Benchmark Coming Soon]</i>
+    </td>
+  </tr>
 
-### 3. Future Roadmap (Planned)
-* **Memory Layouts:** Investigating the impact of NHWC vs. NCHW formats on vectorization efficiency.
-* **Sparsity:** Techniques for exploiting zero-weight structures to skip compute cycles.
-* **Custom Kernels:** Introduction to writing custom ops when the compiler cannot infer the optimal path.
+  <tr>
+    <td width="60%" valign="top">
+      <h3>3. Future Roadmap (Planned)</h3>
+      <ul>
+        <li><b>Memory Layouts:</b> Investigating the impact of NHWC vs. NCHW formats on vectorization efficiency.</li>
+        <li><b>Sparsity:</b> Techniques for exploiting zero-weight structures to skip compute cycles.</li>
+        <li><b>Custom Kernels:</b> Introduction to writing custom ops when the compiler cannot infer the optimal path.</li>
+      </ul>
+    </td>
+    <td width="40%" valign="center" align="center">
+      <i>[Concept Diagram Coming Soon]</i>
+    </td>
+  </tr>
+</table>
