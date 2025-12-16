@@ -77,10 +77,25 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 
   <tr>
     <td width="60%" valign="top">
+      <h3><a href="notebooks/05_qat_from_scratch.ipynb">5. Quantization Aware Training (QAT)</a></h3>
+      <ul>
+        <li><b>Focus:</b> Training Dynamics & The Straight Through Estimator.</li>
+        <li><b>Concept:</b> Implementing QAT from scratch to recover accuracy in low-bit (INT4) models. We solve the "vanishing gradient" problem of the `round()` function using the Straight Through Estimator (STE).</li>
+        <li><b>Key Artifact:</b> A regression benchmark showing how QAT (Green) fits data perfectly where Naive Quantization (Red) fails.</li>
+      </ul>
+    </td>
+    <td width="40%" valign="top">
+      <br>
+      <img src="images/qat_success.png" alt="QAT vs PTQ Benchmark" width="100%">
+      <b>Naive Quantization (Red)</b> creates jagged, inaccurate predictions. <b>QAT (Green)</b> learns to "step" at the optimal points, matching the FP32 baseline despite having 4-bit weights.
+    </td>
+  </tr>
+
+  <tr>
+    <td width="60%" valign="top">
       <h3>Future Roadmap (Planned)</h3>
       <ul>
-        <li><b>5. QAT from Scratch:</b> Implementing the "Straight Through Estimator" to train quantized models.</li>
-        <li><b>6. Custom Kernels:</b> Writing OpenAI Triton kernels to bypass compiler limitations.</li>
+        <li><b>6. Custom Kernels:</b> Writing OpenAI Triton kernels to bypass compiler limitations and execute INT4 operations efficiently on GPU.</li>
       </ul>
     </td>
     <td width="40%" valign="center" align="center">
