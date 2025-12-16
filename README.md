@@ -61,11 +61,26 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 
   <tr>
     <td width="60%" valign="top">
-      <h3>4. Future Roadmap (Planned)</h3>
+      <h3><a href="notebooks/04_sensitivity_analysis.ipynb">4. Layer Sensitivity Analysis</a></h3>
       <ul>
-        <li><b>Sensitivity Analysis:</b> Optimal bit-width allocation (INT4 vs INT8) per layer.</li>
-        <li><b>QAT from Scratch:</b> Implementing the "Straight Through Estimator" to train quantized models.</li>
-        <li><b>Custom Kernels:</b> Writing OpenAI Triton kernels to bypass compiler limitations.</li>
+        <li><b>Focus:</b> Mixed-Precision Quantization Strategy.</li>
+        <li><b>Concept:</b> Not all layers are equal. We perform a "sensitivity scan" (perturbing one layer at a time) to measure KL Divergence drift. This identifies the "Diva" layers (sensitive) vs. "Stoic" layers (robust).</li>
+        <li><b>Key Artifact:</b> A Mixed-Precision Policy allocating INT8 to sensitive layers and INT4 to robust ones.</li>
+      </ul>
+    </td>
+    <td width="40%" valign="top">
+      <br>
+      <img src="images/sensitivity.png" alt="Layer Sensitivity Graph" width="100%">
+      <b>The Red Bars</b> (e.g., Downsampling layers) break under INT4 pressure and require INT8. <b>The Green Bars</b> (Feature extraction) remain stable and can be aggressively compressed.
+    </td>
+  </tr>
+
+  <tr>
+    <td width="60%" valign="top">
+      <h3>Future Roadmap (Planned)</h3>
+      <ul>
+        <li><b>5. QAT from Scratch:</b> Implementing the "Straight Through Estimator" to train quantized models.</li>
+        <li><b>6. Custom Kernels:</b> Writing OpenAI Triton kernels to bypass compiler limitations.</li>
       </ul>
     </td>
     <td width="40%" valign="center" align="center">
