@@ -45,15 +45,31 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 
   <tr>
     <td width="60%" valign="top">
-      <h3>3. Future Roadmap (Planned)</h3>
+      <h3>3. Pruning & The Sparsity Paradox</h3>
       <ul>
-        <li><b>Memory Layouts:</b> Investigating the impact of NHWC vs. NCHW formats on vectorization efficiency.</li>
-        <li><b>Sparsity:</b> Techniques for exploiting zero-weight structures to skip compute cycles.</li>
-        <li><b>Custom Kernels:</b> Introduction to writing custom ops when the compiler cannot infer the optimal path.</li>
+        <li><b>Focus:</b> Execution Efficiency vs. Theoretical FLOPs.</li>
+        <li><b>Concept:</b> A counter-intuitive benchmark revealing that setting weights to zero (Unstructured Pruning) often yields <b>zero speedup</b> on standard hardware. Real gains require modifying tensor geometry (Structured Pruning).</li>
+        <li><b>Key Artifact:</b> "The Sparsity Paradox" plot comparing dense, masked, and geometrically pruned inference times.</li>
+      </ul>
+    </td>
+    <td width="40%" valign="top">
+      <br>
+      <img src="images/sparsity.png" alt="Sparsity Paradox Benchmark" width="100%">
+      <b>Unstructured Pruning (Red)</b> fails to accelerate inference despite 50% sparsity. <b>Structured Pruning (Green)</b> delivers linear speedups by physically shrinking the matrix dimensions.
+    </td>
+  </tr>
+
+  <tr>
+    <td width="60%" valign="top">
+      <h3>4. Future Roadmap (Planned)</h3>
+      <ul>
+        <li><b>Sensitivity Analysis:</b> Optimal bit-width allocation (INT4 vs INT8) per layer.</li>
+        <li><b>QAT from Scratch:</b> Implementing the "Straight Through Estimator" to train quantized models.</li>
+        <li><b>Custom Kernels:</b> Writing OpenAI Triton kernels to bypass compiler limitations.</li>
       </ul>
     </td>
     <td width="40%" valign="center" align="center">
-      <i>[Concept Diagram Coming Soon]</i>
+      <i>[Coming Soon]</i>
     </td>
   </tr>
 </table>
