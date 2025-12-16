@@ -13,7 +13,7 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 <table>
   <tr>
     <td width="60%" valign="top">
-      <h3>1. The Operator Fusion Advantage (XLA/JAX)</h3>
+      <h3><a href="notebooks/01_fusion.ipynb">1. The Operator Fusion Advantage (XLA/JAX)</a></h3>
       <ul>
         <li><b>Focus:</b> Graph-Level Optimization & Memory Bandwidth.</li>
         <li><b>Concept:</b> Analysis of how the XLA compiler fuses element-wise operations (like GELU or Swish) into single kernels to reduce HBM access penalties.</li>
@@ -29,7 +29,7 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 
   <tr>
     <td width="60%" valign="top">
-      <h3>2. Quantization & Precision (TFLite)</h3>
+      <h3><a href="notebooks/02_quantization_and_precision.ipynb">2. Quantization & Precision (TFLite)</a></h3>
       <ul>
         <li><b>Focus:</b> Arithmetic Efficiency & Model Footprint.</li>
         <li><b>Concept:</b> A comparative study of FP32 vs. INT8 execution. This module explores how reducing precision impacts model size and enables the usage of high-throughput integer pipelines on NPU architectures.</li>
@@ -45,7 +45,7 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 
   <tr>
     <td width="60%" valign="top">
-      <h3>3. Pruning & The Sparsity Paradox</h3>
+      <h3><a href="notebooks/03_pruning_and_sparsity.ipynb">3. Pruning & The Sparsity Paradox</a></h3>
       <ul>
         <li><b>Focus:</b> Execution Efficiency vs. Theoretical FLOPs.</li>
         <li><b>Concept:</b> A counter-intuitive benchmark revealing that setting weights to zero (Unstructured Pruning) often yields <b>zero speedup</b> on standard hardware. Real gains require modifying tensor geometry (Structured Pruning).</li>
