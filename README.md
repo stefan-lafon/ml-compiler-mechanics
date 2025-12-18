@@ -11,95 +11,75 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 ## Modules
 
 <table>
+  <thead>
+    <tr>
+      <th width="20%">Key Artifact</th>
+      <th width="80%">Module Description</th>
+    </tr>
+  </thead>
+  
   <tr>
-    <td width="60%" valign="top">
-      <h3><a href="notebooks/01_fusion.ipynb">1. The Operator Fusion Advantage (XLA/JAX)</a></h3>
-      <ul>
-        <li><b>Focus:</b> Graph-Level Optimization & Memory Bandwidth.</li>
-        <li><b>Concept:</b> Analysis of how the XLA compiler fuses element-wise operations (like GELU or Swish) into single kernels to reduce HBM access penalties.</li>
-        <li><b>Key Artifact:</b> Roofline analysis comparing Eager Execution vs. XLA JIT.</li>
-      </ul>
+    <td align="center">
+      <img src="notebooks/01_fusion/assets/fusion_medium.png" width="180px" alt="Roofline Plot">
     </td>
-    <td width="40%" valign="top">
-      <br>
-      <img src="images/fusion_medium.png" alt="Medium Fusion Roofline Plot" width="100%">
-      <b>Eager Execution (Red)</b> collapses on medium-complexity workloads, while <b>JIT (Green)</b> saturates the hardware bandwidth.
+    <td valign="top">
+      <h3><a href="notebooks/01_fusion/01_fusion.ipynb">1. The Operator Fusion Advantage (XLA/JAX)</a></h3>
+      <p><b>Focus:</b> Graph-Level Optimization & Memory Bandwidth.</p>
+      <p>Analysis of how the XLA compiler fuses element-wise operations (like GELU) into single kernels to reduce HBM access penalties. <i>(Comparing Eager Execution vs. XLA JIT)</i>.</p>
     </td>
   </tr>
 
   <tr>
-    <td width="60%" valign="top">
-      <h3><a href="notebooks/02_quantization_and_precision.ipynb">2. Quantization & Precision (TFLite)</a></h3>
-      <ul>
-        <li><b>Focus:</b> Arithmetic Efficiency & Model Footprint.</li>
-        <li><b>Concept:</b> A comparative study of FP32 vs. INT8 execution. This module explores how reducing precision impacts model size and enables the usage of high-throughput integer pipelines on NPU architectures.</li>
-        <li><b>Key Artifact:</b> Latency and size benchmarks on standard vision backbones.</li>
-      </ul>
+    <td align="center">
+      <img src="notebooks/02_quantization/assets/quantization_confidence.png" width="180px" alt="Quantization Drift">
     </td>
-    <td width="40%" valign="top">
-      <br>
-      <img src="images/quantization_confidence.png" alt="Quantization Confidence Drift" width="100%">
-      <b>4x size reduction</b> (13MB → 3.6MB) with negligible accuracy loss and minimal confidence drift (<5%) on standard test images.
+    <td valign="top">
+      <h3><a href="notebooks/02_quantization/02_quantization_and_precision.ipynb">2. Quantization & Precision (TFLite)</a></h3>
+      <p><b>Focus:</b> Arithmetic Efficiency & Model Footprint.</p>
+      <p>A comparative study of FP32 vs. INT8 execution. Showcases how reducing precision impacts model size (4x reduction) and enables high-throughput integer pipelines.</p>
     </td>
   </tr>
 
   <tr>
-    <td width="60%" valign="top">
-      <h3><a href="notebooks/03_pruning_and_sparsity.ipynb">3. Pruning & The Sparsity Paradox</a></h3>
-      <ul>
-        <li><b>Focus:</b> Execution Efficiency vs. Theoretical FLOPs.</li>
-        <li><b>Concept:</b> A counter-intuitive benchmark revealing that setting weights to zero (Unstructured Pruning) often yields <b>zero speedup</b> on standard hardware. Real gains require modifying tensor geometry (Structured Pruning).</li>
-        <li><b>Key Artifact:</b> "The Sparsity Paradox" plot comparing dense, masked, and geometrically pruned inference times.</li>
-      </ul>
+    <td align="center">
+      <img src="notebooks/03_sparsity/assets/sparsity.png" width="180px" alt="Sparsity Paradox">
     </td>
-    <td width="40%" valign="top">
-      <br>
-      <img src="images/sparsity.png" alt="Sparsity Paradox Benchmark" width="100%">
-      <b>Unstructured Pruning (Red)</b> fails to accelerate inference despite 50% sparsity. <b>Structured Pruning (Green)</b> delivers linear speedups by physically shrinking the matrix dimensions.
+    <td valign="top">
+      <h3><a href="notebooks/03_sparsity/03_pruning_and_sparsity.ipynb">3. Pruning & The Sparsity Paradox</a></h3>
+      <p><b>Focus:</b> Execution Efficiency vs. Theoretical FLOPs.</p>
+      <p>A counter-intuitive benchmark demonstrating that Unstructured Pruning (masking) yields zero speedup. Real gains require modifying tensor geometry (Structured Pruning).</p>
     </td>
   </tr>
 
   <tr>
-    <td width="60%" valign="top">
-      <h3><a href="notebooks/04_sensitivity_analysis.ipynb">4. Layer Sensitivity Analysis</a></h3>
-      <ul>
-        <li><b>Focus:</b> Mixed-Precision Quantization Strategy.</li>
-        <li><b>Concept:</b> Not all layers are equal. We perform a "sensitivity scan" (perturbing one layer at a time) to measure KL Divergence drift. This identifies the "Diva" layers (sensitive) vs. "Stoic" layers (robust).</li>
-        <li><b>Key Artifact:</b> A Mixed-Precision Policy allocating INT8 to sensitive layers and INT4 to robust ones.</li>
-      </ul>
+    <td align="center">
+      <img src="notebooks/04_sensitivity/assets/sensitivity.png" width="180px" alt="Sensitivity Scan">
     </td>
-    <td width="40%" valign="top">
-      <br>
-      <img src="images/sensitivity.png" alt="Layer Sensitivity Graph" width="100%">
-      <b>The Red Bars</b> (e.g., Downsampling layers) break under INT4 pressure and require INT8. <b>The Green Bars</b> (Feature extraction) remain stable and can be aggressively compressed.
+    <td valign="top">
+      <h3><a href="notebooks/04_sensitivity/04_sensitivity_analysis.ipynb">4. Layer Sensitivity Analysis</a></h3>
+      <p><b>Focus:</b> Mixed-Precision Quantization Strategy.</p>
+      <p>A "sensitivity scan" identifies sensitive layers (require INT8) vs. more robust layers (safe for INT4), creating an optimal mixed-precision policy.</p>
     </td>
   </tr>
 
   <tr>
-    <td width="60%" valign="top">
-      <h3><a href="notebooks/05_qat_from_scratch.ipynb">5. Quantization Aware Training (QAT)</a></h3>
-      <ul>
-        <li><b>Focus:</b> Training Dynamics & The Straight Through Estimator.</li>
-        <li><b>Concept:</b> Implementing QAT from scratch to recover accuracy in low-bit (INT4) models. We solve the "vanishing gradient" problem of the `round()` function using the Straight Through Estimator (STE).</li>
-        <li><b>Key Artifact:</b> A regression benchmark showing how QAT (Green) fits data perfectly where Naive Quantization (Red) fails.</li>
-      </ul>
+    <td align="center">
+      <img src="notebooks/05_qat/assets/qat_success.png" width="180px" alt="QAT Success">
     </td>
-    <td width="40%" valign="top">
-      <br>
-      <img src="images/qat_success.png" alt="QAT vs PTQ Benchmark" width="100%">
-      <b>Naive Quantization (Red)</b> creates jagged, inaccurate predictions. <b>QAT (Green)</b> learns to "step" at the optimal points, matching the FP32 baseline despite having 4-bit weights.
+    <td valign="top">
+      <h3><a href="notebooks/05_qat/05_qat_from_scratch.ipynb">5. Quantization Aware Training (QAT)</a></h3>
+      <p><b>Focus:</b> Training Dynamics & The Straight Through Estimator.</p>
+      <p>Implementing the "Straight Through Estimator" (STE) to train 4-bit models from scratch, recovering accuracy where standard Post-Training Quantization fails.</p>
     </td>
   </tr>
 
   <tr>
-    <td width="60%" valign="top">
-      <h3>Future Roadmap (Planned)</h3>
-      <ul>
-        <li><b>6. Custom Kernels:</b> Writing OpenAI Triton kernels to bypass compiler limitations and execute INT4 operations efficiently on GPU.</li>
-      </ul>
+    <td align="center">
+      <i>Coming Soon</i>
     </td>
-    <td width="40%" valign="center" align="center">
-      <i>[Coming Soon]</i>
+    <td valign="top">
+      <h3>6. Future Roadmap: Custom Kernels</h3>
+      <p>Writing OpenAI Triton kernels to bypass compiler limitations and execute INT4 operations efficiently on GPU.</p>
     </td>
   </tr>
 </table>
