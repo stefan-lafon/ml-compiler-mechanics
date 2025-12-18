@@ -1,4 +1,4 @@
-# 03_pruning_and_sparsity.ipynb: The Sparsity Paradox
+# The Sparsity Paradox
 
 This notebook reveals an uncomfortable truth in machine learning: **Setting weights to zero does not automatically make your model faster.**
 

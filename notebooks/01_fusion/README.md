@@ -1,4 +1,4 @@
-# 01_fusion.ipynb: JAX Operator Fusion & Bandwidth Analysis
+# Operator Fusion & Bandwidth Analysis
 
 This lab demonstrates how XLA’s "Operator Fusion" solves this bottleneck by merging multiple steps into a single kernel, saving those expensive trips to memory.
 

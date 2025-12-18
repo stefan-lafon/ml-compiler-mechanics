@@ -1,4 +1,4 @@
-# 04_sensitivity_analysis.ipynb: Layer Sensitivity Analysis
+# Layer Sensitivity Analysis
 
 This notebook answers the most critical question in advanced quantization: **Which layers can we crush to 4-bits, and which ones will break the model?**
 

@@ -1,4 +1,4 @@
-# 05_qat_from_scratch.ipynb: Quantization Aware Training (QAT)
+# Quantization Aware Training (QAT)
 
 This notebook solves the "Sensitive Layer" problem we found in the previous module.
 

@@ -1,4 +1,4 @@
-# 02_quantization_and_precision.ipynb: TFLite Dynamic Range Quantization
+# TFLite Dynamic Range Quantization
 
 This notebook explores the "free lunch" of edge AI: **Dynamic Range Quantization**.
 
