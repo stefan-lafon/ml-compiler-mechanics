@@ -26,6 +26,7 @@ We set up a challenging regression task (fitting a noisy sine wave) and compare 
 The difference is night and day.
 
 ![QAT Success Chart](assets/qat_success.png)
+
 *(Note: Run the notebook to generate this comparison live)*
 
 **How to read the graph:**

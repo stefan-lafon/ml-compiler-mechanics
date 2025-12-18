@@ -16,6 +16,7 @@ We don't guess. We test:
 The output is a "Sensitivity Profile" of the network.
 
 ![Sensitivity Analysis Chart](assets/sensitivity.png)
+
 *(Note: Run the notebook to generate this profile for your specific hardware/model)*
 
 **What to look for:**

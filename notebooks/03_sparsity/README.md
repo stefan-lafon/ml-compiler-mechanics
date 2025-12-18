@@ -17,6 +17,7 @@ We benchmark three scenarios to see where the performance gains actually live:
 We compare the inference latency (milliseconds) across all three.
 
 ![Sparsity Analysis Chart](assets/sparsity.png)
+
 *(Note: Run the notebook to generate this latency graph for your specific hardware)*
 
 **The "Paradox":**

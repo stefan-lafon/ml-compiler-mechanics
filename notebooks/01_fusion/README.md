@@ -15,7 +15,8 @@ I’ve set up a benchmark using `ipywidgets` to pit **Eager Execution** (standar
 
 When you hit **Run Profiler**, the notebook generates a Roofline plot. This is the best way to visualize your hardware's limits.
 
-![Roofline Analysis Chart](assets/01_fusion_chart.png)
+![Roofline Analysis Chart](assets/fusion_medium.png)
+
 *(Note: Run the profiler in the notebook to generate the curve for your specific GPU)*
 
 **How to read the graph:**

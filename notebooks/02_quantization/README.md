@@ -17,6 +17,7 @@ We compare:
 I've set up a plot to visualize "Confidence Drift"—basically, how much less sure the model becomes after quantization.
 
 ![Quantization Confidence Chart](assets/quantization_confidence.png)
+
 *(Note: The chart above is from a sample run. The notebook will generate a fresh one based on your specific calibration data.)*
 
 **How to read the chart:**
