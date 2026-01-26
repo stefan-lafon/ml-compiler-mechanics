@@ -10,24 +10,24 @@ Instead of training in high precision and *hoping* the weights survive quantizat
 We can't just add `x = round(x)` to our PyTorch training loop.
 * The derivative of `round()` is **zero** almost everywhere.
 * If gradients are zero, backpropagation stops, and the model learns nothing.
+Fundamentally, the problem is that backprop requires differentiability, and quantization is intrinsically non-differentiable since it assigns continuous values to discrete buckets.
 
 **The Solution: The Straight Through Estimator (STE)**
 We implement the industry-standard "hack" to bypass this:
 1.  **Forward Pass:** We apply the rounding so the loss function "feels" the noise.
-2.  **Backward Pass:** We **lie** to the optimizer. We pretend the function was Identity ($y=x$), allowing gradients to flow straight through the quantization block unchanged.
-
+2.  **Backward Pass:** We pretend that the quant operations didn't happen when we compute the gradient.
+That assymetry of forward/backward passes allows us to efficiently perform a form of gradient descent where the model learns to adapt to the quantization operations.
+ 
 ### The Experiment
 We set up a challenging regression task (fitting a noisy sine wave) and compare three models:
 1.  **FP32 Baseline:** Standard training.
-2.  **Naive PTQ:** We take the FP32 model and crush it to INT4. (spoiler: it fails).
+2.  **Naive PTQ:** We take the FP32 model and aggressively reduce precision to INT4.
 3.  **QAT:** We train from scratch using our custom `STEQuantize` autograd function.
 
 ### The Results (Visualized)
-The difference is night and day.
+The difference is super compelling.
 
 ![QAT Success Chart](assets/qat_success.png)
-
-*(Note: Run the notebook to generate this comparison live)*
 
 **How to read the graph:**
 * **Red Line (PTQ):** This represents the "Naive" approach. The model was optimized for high precision, so when we round the weights, the predictions fly off the rails.
