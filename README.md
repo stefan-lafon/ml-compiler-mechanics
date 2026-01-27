@@ -13,7 +13,7 @@ For ML practitioners and systems engineers, understanding these mechanics is no 
 <table>
   <thead>
     <tr>
-      <th width="20%">Key Artifact</th>
+      <th width="20%"> </th>
       <th width="80%">Module Description</th>
     </tr>
   </thead>
